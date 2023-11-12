@@ -25,6 +25,9 @@ dependencies:
   react-dom:
     specifier: 18.2.0
     version: 18.2.0(react@18.2.0)
+  react-hook-form:
+    specifier: 7.48.2
+    version: 7.48.2(react@18.2.0)
   react-intl:
     specifier: 6.4.6
     version: 6.4.6(react@18.2.0)(typescript@5.2.2)
@@ -7354,6 +7357,15 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+
+  /react-hook-form@7.48.2(react@18.2.0):
+    resolution: {integrity: sha512-H0T2InFQb1hX7qKtDIZmvpU1Xfn/bdahWBN1fH19gSe4bBEqTfmlr7H3XWTaVtiK4/tpPaI1F3355GPMZYge+A==}
+    engines: {node: '>=12.22.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /react-intl@6.4.6(react@18.2.0)(typescript@5.2.2):
     resolution: {integrity: sha512-8FiQ1GO6vm0wuO4B7yls9wIbINIo6ZH91geuwyR0VtwfhPc9+ONXKVfzwzkr/GZnwKW93nmH43MS+NSkmttIaA==}
