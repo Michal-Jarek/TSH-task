@@ -1,4 +1,4 @@
 export interface ProductButtonProps {
   isActive: boolean;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
 }

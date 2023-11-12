@@ -15,6 +15,7 @@
     --form-border-col: 224 226 234;
     --unavailable-col: 224 226 234;
     --background-col: 240 241 245;
+    --background-modal-col: 26 27 29;
   }
 }
 
@@ -23,6 +24,7 @@ body {
   font-size: 14px;
   font-weight: 600;
   line-height: 16px;
+  background-color: rgb(var(--background-col));
   font-family: 'Nunito', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

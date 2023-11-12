@@ -17,6 +17,7 @@ export default {
         iconLight: 'rgb(var(--icon-light-col) /  <alpha-value>)',
         formBorder: 'rgb(var(--form-border-col) /  <alpha-value>)',
         bgMain: 'rgb(var(--background-col) /  <alpha-value>)',
+        bgModal: 'rgb(var(--background-modal-col) /  <alpha-value>)',
         unavailable: 'rgb(var(--unavailable-col) /  <alpha-value>)',
     },
       maxWidth: {

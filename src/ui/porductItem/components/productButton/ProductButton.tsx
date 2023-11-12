@@ -5,7 +5,7 @@ export const ProductButton = ({ isActive, onClick }: ProductButtonProps): JSX.El
   if (isActive)
     return (
       <button
-        className={`${btnCommonClass} bg-btnNorm transition-all  duration-300 ease-in-out hover:bg-btnHov`}
+        className={`${btnCommonClass} bg-btnNorm outline-none transition-all duration-300 ease-in-out hover:bg-btnHov focus:bg-btnHov`}
         onClick={onClick}
       >
         Show details
