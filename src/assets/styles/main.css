@@ -1,11 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  :root {
+    --btn-norm-col: 68 96 247;
+    --btn-hover-col: 33 64 232;
+    --btn-disabled-col: 145 148 165;
+    --additional-col: 249 165 43;
+    --primary-txt-col: 145 148 165;
+    --secondary-txt-col: 26 27 29;
+    --icon-light-col: 185 189 207;
+    --form-border-col: 224 226 234;
+    --unavailable-col: 224 226 234;
+    --background-col: 240 241 245;
+    --background-modal-col: 26 27 29;
+  }
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 16px;
+  background-color: rgb(var(--background-col));
+  font-family: 'Nunito', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
