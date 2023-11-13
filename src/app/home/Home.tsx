@@ -1,16 +1,11 @@
 import { Fragment } from 'react';
 
 import { AppRoute } from 'routing/AppRoute.enum';
-import { AppLocale } from 'context/locale/AppLocale.enum';
-import { useLocale } from 'hooks/useLocale/useLocale';
 import { useAuth } from 'hooks/useAuth/useAuth';
 import { useUsers } from 'hooks/useUsers/useUsers';
 import { useNavigate } from 'hooks/useNavigate/useNavigate';
-import { Translation } from 'ui/translation/Translation';
-import { LocationInfo } from 'ui/locationInfo/LocationInfo';
 
 export const Home = () => {
-  const { locale, setLocale } = useLocale();
   const { user, login, logout, isAuthenticated, isAuthenticating } = useAuth();
 
   const {
@@ -27,31 +22,15 @@ export const Home = () => {
   return (
     <>
       <h2>Home</h2>
-      <p>
-        <Translation id="home.helloWorld" />
-        <span style={{ margin: '0 1rem' }}>&#x2190;</span>
-        <span>
-          This text is translated using <strong>Translation</strong> component.
-        </span>
-        <span>Click </span>
-        <button
-          style={{ fontSize: 'inherit' }}
-          onClick={() => setLocale(locale === AppLocale.pl ? AppLocale.en : AppLocale.pl)}
-        >
-          here
-        </button>{' '}
-        to change language.
-      </p>
+
       <p>This is a starter project for TSH React application. Click on navigation links above to learn more.</p>
-      <hr />
-      <LocationInfo />
-      <hr />
-      <div style={{ marginBottom: '2rem' }}>
+
+      <div className="mb-8">
         <p>User information &#129489;</p>
-        <div style={{ marginBottom: '2rem', display: 'flex', gap: '16px' }}>
+        <div className="mb-8 flex gap-4">
           <button
             disabled={isAuthenticating || isAuthenticated}
-            onClick={() => login({ password: 'tsh-react-starter', username: 'tsh' })}
+            onClick={() => login({ password: 'robBOB@2', username: 'robert@op.pl' })}
           >
             {isAuthenticating ? 'Logging in...' : 'Click to login'}
           </button>
@@ -60,13 +39,11 @@ export const Home = () => {
           </button>
         </div>
         {isAuthenticating && <p>Loading data about you...</p>}
-        {isAuthenticated && (
-          <code style={{ background: '#BADA55', padding: '1rem' }}>{JSON.stringify(user, null, 2)}</code>
-        )}
+        {isAuthenticated && <code className="bg-[#BADA55] p-4">{JSON.stringify(user, null, 2)}</code>}
       </div>
       <div>
         <p>List of users &#129489;</p>
-        <div style={{ marginBottom: '2rem' }}>
+        <div className="mb-8">
           <ul>
             {areUsersFetched &&
               usersResponse?.pages?.map((page, index) => (
