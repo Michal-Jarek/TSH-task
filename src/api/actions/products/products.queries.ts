@@ -1,11 +1,7 @@
 import { AxiosInstance } from 'axios';
 import { stringify } from 'qs';
 
-import {
-  GetProductListArgs,
-  GetProductResponse,
-  // QUERY_TYPE_IMPORTS
-} from './products.types';
+import { GetProductListArgs, GetProductResponse } from './products.types';
 
 export const productsQueries = {
   getProductsList:
@@ -14,5 +10,4 @@ export const productsQueries = {
       const queryParams = stringify({ page, limit, search, promo, active }, { addQueryPrefix: true });
       return (await client.get<GetProductResponse>(`/products${queryParams}`)).data;
     },
-  // QUERY_FUNCTIONS_SETUP
 };

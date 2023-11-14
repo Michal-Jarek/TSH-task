@@ -14,16 +14,16 @@ export const Home = () => {
   const {
     data: productsResponse,
     isFetching: isFetchingProducts,
-    isFetched: areProductFetched,
+    isFetched: areProductsFetched,
   } = useProducts({ search, active, promo });
 
   return (
     <div className=" container mt-14">
       {isFetchingProducts && <Loader />}
-      {areProductFetched && (
+      {areProductsFetched && (
         <ul className=" flex flex-wrap justify-center md:justify-around lg:justify-between">
           {productsResponse?.items && productsResponse?.items?.length > 0
-            ? productsResponse?.items?.map((object: ProductItemProps) => {
+            ? productsResponse.items.map((object: ProductItemProps) => {
                 return (
                   <li className=" mb-8 " key={object.id}>
                     <ProductItem {...object} />
