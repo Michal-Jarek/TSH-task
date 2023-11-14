@@ -1,9 +1,7 @@
-import { LocationInfo } from 'ui/locationInfo/LocationInfo';
-
 export const Help = () => {
   return (
     <>
-      <h2>Help</h2>
+      {/* <h2>Help</h2>
       <p>
         This project was bootstrapped with <a href="https://github.com/vitejs/vite">Vite</a> and modified by TSH team.
       </p>
@@ -62,7 +60,7 @@ export const Help = () => {
         To learn React, check out the <a href="https://reactjs.org/">React documentation</a>.
       </p>
       <hr />
-      <LocationInfo />
+      <LocationInfo /> */}
     </>
   );
 };

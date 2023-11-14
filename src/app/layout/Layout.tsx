@@ -1,58 +1,62 @@
-import { Link, Outlet } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
+import { Outlet } from 'react-router-dom';
 
-import logo from 'assets/images/logo.svg';
-import { AppRoute } from 'routing/AppRoute.enum';
-import { ReactComponent as ViteLogo } from 'assets/images/vite-logo.svg';
-import { ReactComponent as VitestLogo } from 'assets/images/vitest-logo.svg';
-import './Layout.css';
+import sprite from '../../assets/icons/spriteIcons.svg';
+interface FormData {
+  searchTerm: string;
+  isActive: boolean;
+  isPromo: boolean;
+}
 
 export const Layout = () => {
+  const { register, handleSubmit } = useForm<FormData>();
+  //  const searchTerm = watch('searchTerm');
+
+  const onSubmit = (data: FormData) => {
+    console.log('Search Term:', data.searchTerm);
+    console.log('Is Active:', data.isActive);
+    console.log('Is Promo:', data.isPromo);
+  };
+
   return (
-    <div className="app">
-      <header className="app__header">
-        <img src={logo} className="app__logo" alt="logo" />
-        <p>
-          Edit <code>src/layout/Layout.tsx</code> and save to reload.
-        </p>
-        <a className="app__link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-        <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-          <a className="app__link" href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">
-            <ViteLogo />
+    <>
+      <div className=" w-full bg-white">
+        <div className="container relative flex flex-wrap items-center py-12">
+          <a href="https://tsh.io/pl/praca/" target="blank" className="text-[24px] leading-10">
+            join.tsh.io
           </a>
-          <a className="app__link" href="https://vitest.dev/" target="_blank" rel="noopener noreferrer">
-            <VitestLogo />
-          </a>
-        </p>
-      </header>
-      <nav className="app__navigation">
-        <ul className="app__menu">
-          <li className="app__menu-item">
-            <Link className="app__menu-link" to={AppRoute.home}>
-              Home
-            </Link>
-          </li>
-          <li className="app__menu-item">
-            <Link className="app__menu-link" to={AppRoute.about}>
-              About
-            </Link>
-          </li>
-          <li className="app__menu-item">
-            <Link className="app__menu-link" to={AppRoute.users}>
-              Users
-            </Link>
-          </li>
-          <li className="app__menu-item">
-            <Link className="app__menu-link" to={AppRoute.help}>
-              Help
-            </Link>
-          </li>
-        </ul>
-      </nav>
-      <main className="app__main">
-        <Outlet />
-      </main>
-    </div>
+          <nav className="">
+            <form onSubmit={handleSubmit(onSubmit)} className="relative flex flex-wrap items-center space-x-4">
+              <div className=" relative w-80   grow">
+                <input
+                  type="text"
+                  placeholder="Search..."
+                  {...register('searchTerm')}
+                  className="mt-7 w-full border p-4"
+                />
+                <button type="submit" className="absolute right-5 top-10">
+                  <svg className="h-6 w-6">
+                    <use href={`${sprite}#search`}></use>
+                  </svg>
+                </button>
+              </div>
+
+              <div>
+                <label>
+                  <input type="checkbox" {...register('isActive')} className="mr-2" />
+                  Active
+                </label>
+                <label>
+                  <input type="checkbox" {...register('isPromo')} className="mr-2" />
+                  Promo
+                </label>
+              </div>
+            </form>
+          </nav>
+          <button className="absolute right-4 top-[60px]">LOGIN</button>
+        </div>
+      </div>
+      <Outlet />
+    </>
   );
 };

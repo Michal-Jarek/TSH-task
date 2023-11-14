@@ -4,10 +4,15 @@ export type LoginMutationArguments = {
 };
 
 export type LoginMutationResponse = {
-  accessToken: string;
-  tokenType: string;
-  expires: number;
-  refreshToken: string;
+  user: {
+    id: string;
+    username: string;
+    avatar: string;
+  };
+  access_token: string;
+  tokenType?: string;
+  expiresIn: number;
+  refreshToken?: string;
 };
 
 export type GetMeQueryResponse = {
