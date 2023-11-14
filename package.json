@@ -1,7 +1,7 @@
 {
   "name": "TSH-task",
   "version": "0.2.0",
-  "private":false,
+  "private": false,
   "homepage": "https://michal-jarek.github.io/TSH-task/",
   "engines": {
     "node": ">=18"
@@ -63,6 +63,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "7.48.2",
     "react-intl": "6.4.6",
+    "react-paginate": "8.2.0",
     "react-router-dom": "6.16.0",
     "typescript": "5.2.2"
   },

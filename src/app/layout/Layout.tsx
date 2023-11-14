@@ -45,7 +45,7 @@ export const Layout = () => {
                   className="absolute right-5 top-10 outline-none hover:fill-btnNorm focus:fill-btnNorm"
                 >
                   <svg className="h-6 w-6">
-                    <use href={`${sprite}#search`}></use>
+                    <use href={`${sprite}#search`} />
                   </svg>
                 </button>
               </div>
@@ -108,7 +108,7 @@ export const Layout = () => {
                         >
                           {field.value && (
                             <svg className="absolute left-1 top-1/2 h-4 w-4 -translate-y-1/2 transform fill-btnNorm">
-                              <use href={`${sprite}#check`}></use>
+                              <use href={`${sprite}#check`} />
                             </svg>
                           )}
                         </div>
