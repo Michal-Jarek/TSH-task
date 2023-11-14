@@ -20,8 +20,8 @@ export type GetProductResponse = {
 };
 export type GetProductListArgs = {
   search?: string | null;
-  limit?: string | null;
-  page?: string | null;
+  limit?: number;
+  page?: number;
   promo?: string | null;
   active?: string | null;
 };
