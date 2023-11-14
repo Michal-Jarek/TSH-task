@@ -8,7 +8,7 @@ export default {
      container: {
       center: true,
       padding: '1rem',
-      breakpoints: {
+      screens: {
         'sm': '640px',
         'md': '768px',
         'lg': '1024px',
@@ -17,6 +17,7 @@ export default {
     },
     
     extend: {
+     
       colors: {
         primaryTxt: 'rgb(var(--primary-txt-col) /  <alpha-value>)',
         secondaryTxt: 'rgb(var(--secondary-txt-col) /  <alpha-value>)',
@@ -33,7 +34,10 @@ export default {
       maxWidth: {
         'mobile': '327px', // Two times extra-small
         'tablet': '288px', // Three times extra-small
-      },},
+      },
+    },
+    
   },
+   
 plugins: [],
 }
