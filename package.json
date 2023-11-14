@@ -1,7 +1,7 @@
 {
   "name": "TSH-task",
   "version": "0.2.0",
-  "private": true,
+  "private":false,
   "homepage": "https://michal-jarek.github.io/TSH-task/",
   "engines": {
     "node": ">=18"
