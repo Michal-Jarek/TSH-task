@@ -4,6 +4,8 @@ import { Loader, ProductItem } from 'ui';
 import { ProductItemProps } from 'ui/porductItem/ProductItem.types';
 import { useProducts } from 'hooks/useProducts/useProducts';
 
+import { NoProducts } from './components/noProducts';
+
 export const Home = () => {
   const [params] = useSearchParams();
 
@@ -22,15 +24,17 @@ export const Home = () => {
       {isFetchingProducts && <Loader />}
       {areProductsFetched && (
         <ul className=" flex flex-wrap justify-center md:justify-around lg:justify-between">
-          {productsResponse?.items && productsResponse?.items?.length > 0
-            ? productsResponse.items.map((object: ProductItemProps) => {
-                return (
-                  <li className=" mb-8 " key={object.id}>
-                    <ProductItem {...object} />
-                  </li>
-                );
-              })
-            : 'TU MUSZĘ WSTAWIĆ KOMPONENT'}
+          {productsResponse?.items && productsResponse?.items?.length > 0 ? (
+            productsResponse.items.map((object: ProductItemProps) => {
+              return (
+                <li className=" mb-8 " key={object.id}>
+                  <ProductItem {...object} />
+                </li>
+              );
+            })
+          ) : (
+            <NoProducts />
+          )}
         </ul>
       )}
     </div>
