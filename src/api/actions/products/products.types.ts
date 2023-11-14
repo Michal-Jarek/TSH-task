@@ -20,10 +20,8 @@ export type GetProductResponse = {
 };
 export type GetProductListArgs = {
   search?: string | null;
-  limit?: string;
-  page?: string;
+  limit?: string | null;
+  page?: string | null;
   promo?: string | null;
   active?: string | null;
 };
-
-// API_ACTION_TYPES
