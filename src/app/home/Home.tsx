@@ -1,73 +1,38 @@
-import { Fragment } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
-import { AppRoute } from 'routing/AppRoute.enum';
-import { useAuth } from 'hooks/useAuth/useAuth';
-import { useUsers } from 'hooks/useUsers/useUsers';
-import { useNavigate } from 'hooks/useNavigate/useNavigate';
+import { Loader, ProductItem } from 'ui';
+import { ProductItemProps } from 'ui/porductItem/ProductItem.types';
+import { useProducts } from 'hooks/useProducts/useProducts';
 
 export const Home = () => {
-  const { user, login, logout, isAuthenticated, isAuthenticating } = useAuth();
+  const [params] = useSearchParams();
+
+  const search = params.get('search');
+  const active = params.get('active');
+  const promo = params.get('promo');
 
   const {
-    data: usersResponse,
-    isFetching: isFetchingUsers,
-    isFetched: areUsersFetched,
-    hasNextPage: hasMoreUsers,
-    fetchNextPage: loadMoreUsers,
-    isFetchingNextPage,
-  } = useUsers();
-
-  const navigate = useNavigate();
+    data: productsResponse,
+    isFetching: isFetchingProducts,
+    isFetched: areProductFetched,
+  } = useProducts({ search, active, promo });
 
   return (
-    <>
-      <h2>Home</h2>
-
-      <p>This is a starter project for TSH React application. Click on navigation links above to learn more.</p>
-
-      <div className="mb-8">
-        <p>User information &#129489;</p>
-        <div className="mb-8 flex gap-4">
-          <button
-            disabled={isAuthenticating || isAuthenticated}
-            onClick={() => login({ password: 'robBOB@2', username: 'robert@op.pl' })}
-          >
-            {isAuthenticating ? 'Logging in...' : 'Click to login'}
-          </button>
-          <button disabled={!isAuthenticated} onClick={logout}>
-            Click to logout
-          </button>
-        </div>
-        {isAuthenticating && <p>Loading data about you...</p>}
-        {isAuthenticated && <code className="bg-[#BADA55] p-4">{JSON.stringify(user, null, 2)}</code>}
-      </div>
-      <div>
-        <p>List of users &#129489;</p>
-        <div className="mb-8">
-          <ul>
-            {areUsersFetched &&
-              usersResponse?.pages?.map((page, index) => (
-                <Fragment key={index}>
-                  {page.users?.map((user) => (
-                    <li key={user.id}>
-                      <button
-                        onClick={() => {
-                          navigate(AppRoute.user, { params: { id: user.id } });
-                        }}
-                      >
-                        User {user.id}
-                      </button>
-                    </li>
-                  ))}
-                </Fragment>
-              ))}
-          </ul>
-          {isFetchingNextPage && <p>Loading more users...</p>}
-          <button disabled={isFetchingNextPage || isFetchingUsers || !hasMoreUsers} onClick={() => loadMoreUsers()}>
-            Load more
-          </button>
-        </div>
-      </div>
-    </>
+    <div className=" container mt-14">
+      {isFetchingProducts && <Loader />}
+      {areProductFetched && (
+        <ul className=" flex flex-wrap justify-center md:justify-around lg:justify-between">
+          {productsResponse?.items && productsResponse?.items?.length > 0
+            ? productsResponse?.items?.map((object: ProductItemProps) => {
+                return (
+                  <li className=" mb-8 " key={object.id}>
+                    <ProductItem {...object} />
+                  </li>
+                );
+              })
+            : 'TU MUSZĘ WSTAWIĆ KOMPONENT'}
+        </ul>
+      )}
+    </div>
   );
 };

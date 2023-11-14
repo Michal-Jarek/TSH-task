@@ -3,7 +3,7 @@ export interface ProductItemProps {
   description: string;
   rating: number;
   image: string;
-  promo: boolean;
-  active: boolean;
+  promo: boolean | string;
+  active: boolean | string;
   id: string;
 }

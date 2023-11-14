@@ -6,8 +6,8 @@ export type GetProductResponse = {
       description: string;
       rating: number;
       image: string;
-      promo: true;
-      active: true;
+      promo: string;
+      active: string;
     },
   ];
   meta: {
@@ -19,11 +19,11 @@ export type GetProductResponse = {
   };
 };
 export type GetProductListArgs = {
-  search?: string;
+  search?: string | null;
   limit?: string;
   page?: string;
-  promo?: boolean;
-  active?: boolean;
+  promo?: string | null;
+  active?: string | null;
 };
 
 // API_ACTION_TYPES
